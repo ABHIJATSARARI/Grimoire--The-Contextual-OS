@@ -1,0 +1,23 @@
+{
+  "name": "grimoire-contextual-os",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "reality": "npm run dev -w unicorn-corp",
+    "hell": "npm run dev -w eldritch-cult",
+    "academia": "npm run dev -w academia",
+    "reality:cli": "npm run cli -w unicorn-corp",
+    "hell:cli": "npm run cli -w eldritch-cult",
+    "academia:cli": "npm run cli -w academia",
+    "verify": "node packages/core/test.js",
+    "compare": "node compare.js",
+    "compare:all": "node compare-all.js",
+    "demo:cli": "npm run reality:cli && echo '\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n' && npm run hell:cli && echo '\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n' && npm run academia:cli",
+    "install:all": "npm install && npm install -w unicorn-corp && npm install -w eldritch-cult && npm install -w academia"
+  }
+}

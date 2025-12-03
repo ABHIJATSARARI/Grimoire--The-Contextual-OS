@@ -1,0 +1,76 @@
+.team-display {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+.team-display h4 {
+  color: #8a2be2;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.team-member {
+  background: rgba(138, 43, 226, 0.1);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 8px;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s;
+}
+
+.team-member:hover {
+  background: rgba(138, 43, 226, 0.2);
+  transform: translateY(-2px);
+}
+
+.team-member.more {
+  justify-content: center;
+  cursor: default;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #8a2be2;
+}
+
+.more-count {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #8a2be2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.member-info {
+  flex: 1;
+}
+
+.member-name {
+  color: #8a2be2;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.member-role {
+  color: rgba(138, 43, 226, 0.7);
+  font-size: 0.75rem;
+}

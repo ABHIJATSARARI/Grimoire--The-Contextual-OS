@@ -1,0 +1,374 @@
+.ai-analyzer {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border: 2px solid #667eea;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.analyzer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.analyzer-header h3 {
+  color: #2d3748;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.api-toggle {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.api-toggle:hover {
+  background: #5568d3;
+  transform: translateY(-1px);
+}
+
+.api-input-section {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.api-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.api-hint {
+  font-size: 0.85rem;
+  color: #718096;
+  margin: 0;
+}
+
+.api-hint a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.api-hint a:hover {
+  text-decoration: underline;
+}
+
+.analyzer-input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 1rem;
+}
+
+.analyzer-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.analyze-btn {
+  width: 100%;
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.analyze-btn:hover:not(:disabled) {
+  background: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.analyze-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.analysis-result {
+  margin-top: 1.5rem;
+  animation: slideIn 0.3s ease-out;
+}
+
+.result-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.result-section h4 {
+  color: #2d3748;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.result-section p {
+  margin: 0.5rem 0;
+  color: #4a5568;
+}
+
+.result-section.translation {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.result-section.translation h4 {
+  color: white;
+}
+
+.result-section.translation p {
+  color: white;
+}
+
+.translated-text {
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.hint {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+.mock-notice {
+  background: #fef3c7;
+  border: 2px solid #fbbf24;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: #78350f;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.api-status {
+  background: #d1fae5;
+  color: #065f46;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 2px solid #10b981;
+}
+
+.analyzer-info {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.analyzer-info p {
+  margin: 0;
+  color: #0c4a6e;
+  font-size: 0.9rem;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.examples-section {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.examples-label {
+  color: #667eea;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  font-size: 0.9rem;
+}
+
+.example-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.example-btn {
+  background: #f7fafc;
+  border: 2px solid #e2e8f0;
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #4a5568;
+  font-size: 0.9rem;
+}
+
+.example-btn:hover {
+  background: #edf2f7;
+  border-color: #667eea;
+  transform: translateX(4px);
+}
+
+.button-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.clear-btn {
+  background: #e2e8f0;
+  color: #4a5568;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 120px;
+}
+
+.clear-btn:hover {
+  background: #cbd5e0;
+  transform: translateY(-2px);
+}
+
+.score-bar {
+  margin-bottom: 1rem;
+}
+
+.score-label {
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.score-progress {
+  width: 100%;
+  height: 24px;
+  background: #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.score-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.5s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.5rem;
+  color: white;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.sentiment-badge {
+  background: #667eea;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.buzzwords {
+  margin-top: 1rem;
+}
+
+.buzzword-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.buzzword-tag {
+  background: #667eea;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.no-buzzwords {
+  color: #10b981;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.suggestions {
+  background: #f7fafc;
+}
+
+.suggestion-box {
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid;
+}
+
+.suggestion-box.warning {
+  background: #fef3c7;
+  border-color: #f59e0b;
+}
+
+.suggestion-box.moderate {
+  background: #dbeafe;
+  border-color: #3b82f6;
+}
+
+.suggestion-box.good {
+  background: #d1fae5;
+  border-color: #10b981;
+}
+
+.suggestion-box p {
+  margin: 0.5rem 0;
+  color: #1f2937;
+}
+
+.suggestion-box ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  color: #4b5563;
+}
+
+.suggestion-box li {
+  margin: 0.25rem 0;
+}

@@ -1,0 +1,145 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          cd apps/unicorn-corp && npm ci
+          cd ../eldritch-cult && npm ci
+          cd ../academia && npm ci
+
+      - name: Build Unicorn Corp
+        run: |
+          cd apps/unicorn-corp
+          npm run build
+          cd ../..
+
+      - name: Build Eldritch Cult
+        run: |
+          cd apps/eldritch-cult
+          npm run build
+          cd ../..
+
+      - name: Build Academia
+        run: |
+          cd apps/academia
+          npm run build
+          cd ../..
+
+      - name: Create deployment structure
+        run: |
+          mkdir -p dist
+          cp -r apps/unicorn-corp/dist dist/reality
+          cp -r apps/eldritch-cult/dist dist/hell
+          cp -r apps/academia/dist dist/academia
+          
+          # Create index.html that redirects to reality
+          cat > dist/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="refresh" content="0; url=/reality/">
+            <title>Grimoire - Redirecting...</title>
+            <style>
+              body {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                font-family: system-ui, -apple-system, sans-serif;
+                color: white;
+              }
+              .container {
+                text-align: center;
+              }
+              h1 {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+              }
+              p {
+                font-size: 1.2rem;
+                opacity: 0.9;
+              }
+              .links {
+                margin-top: 2rem;
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+              }
+              a {
+                background: white;
+                color: #667eea;
+                padding: 1rem 2rem;
+                border-radius: 8px;
+                text-decoration: none;
+                font-weight: 600;
+                transition: transform 0.2s;
+              }
+              a:hover {
+                transform: translateY(-2px);
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <h1>🎭 Grimoire</h1>
+              <p>The Contextual Operating System</p>
+              <div class="links">
+                <a href="/reality/">🦄 Unicorn Corp</a>
+                <a href="/hell/">⛧ Eldritch Cult</a>
+                <a href="/academia/">🎓 Academia</a>
+              </div>
+            </div>
+          </body>
+          </html>
+          EOF
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

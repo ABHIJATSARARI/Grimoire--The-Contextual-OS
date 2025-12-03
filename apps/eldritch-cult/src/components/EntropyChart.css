@@ -1,0 +1,91 @@
+.entropy-chart {
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.1) 0%, rgba(139, 0, 0, 0.1) 100%);
+  border: 2px solid rgba(255, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+.entropy-chart:hover {
+  border-color: rgba(255, 0, 0, 0.5);
+  box-shadow: 0 8px 30px rgba(255, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.entropy-chart h4 {
+  color: #ff0000;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.chart-stats {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 0, 0, 0.1);
+}
+
+.stat-value.normal {
+  color: #ff9999;
+  background: rgba(255, 153, 153, 0.1);
+}
+
+.stat-value.high {
+  color: #ff6666;
+  background: rgba(255, 102, 102, 0.1);
+}
+
+.stat-value.critical {
+  color: #ff0000;
+  background: rgba(255, 0, 0, 0.2);
+  animation: pulse-glow 2s infinite;
+}
+
+.entropy-chart canvas {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  cursor: crosshair;
+}
+
+.chart-label {
+  text-align: center;
+  color: rgba(255, 0, 0, 0.8);
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.label-icon {
+  font-size: 1.1rem;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+  }
+}
